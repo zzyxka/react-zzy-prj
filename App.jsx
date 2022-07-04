@@ -1,9 +1,17 @@
 // App.jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import c from './App.css';
+import { Button } from 'shineout';
 
-const App = () => <h1>Hello React 1123121!</h1>;
+const App = () => (
+	<div>
+		<h1 className={c.h1}>Hello React!</h1>
+		<Button className={c.buttonWave}>click me</Button>
+	</div>
+);
 
 export default () => {
-	ReactDOM.render(<App />, document.body);
+	const root = createRoot(document.querySelector('#container'));
+	root.render(<App />);
 };

@@ -1,6 +1,6 @@
-// webpack.config.prod.js
+// webpack.config.dev.js
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { baseRules, basePlugins } = require('./webpack.config.base');
 
 module.exports = {
 	entry: './index.js',
@@ -10,34 +10,13 @@ module.exports = {
 		// devServer
 		static: './dist',
 	},
-	plugins: [new HtmlWebpackPlugin({ title: 'HELLO' })],
+	plugins: [...basePlugins],
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		environment: { arrowFunction: false },
 	},
 	module: {
-		rules: [
-			{
-				test: /\.m?js$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: [['@babel/preset-env', { targets: 'defaults' }]],
-					},
-				},
-			},
-			{
-				test: /\.jsx$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-react', ['@babel/preset-env', { targets: 'defaults' }]],
-					},
-				},
-			},
-		],
+		rules: [...baseRules],
 	},
 };
