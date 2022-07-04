@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './index.js',
+	mode: 'production',
 	plugins: [new HtmlWebpackPlugin({ title: 'HELLO' })],
 	output: {
 		filename: 'bundle.js',
@@ -28,10 +29,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: [
-							'@babel/preset-react',
-							['@babel/preset-env', { targets: 'defaults' }],
-						],
+						presets: ['@babel/preset-react', ['@babel/preset-env', { targets: 'defaults' }]],
 					},
 				},
 			},
